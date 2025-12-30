@@ -1,0 +1,391 @@
+/* ==========================================
+   PÁGINA DE SOFTWARES - ESTILOS ESPECÍFICOS
+   ========================================== */
+
+/* Hero Section Softwares */
+.hero-software {
+  margin-top: 80px;
+  text-align: center;
+  padding: 4rem 5%;
+  background: linear-gradient(
+    135deg,
+    var(--cor-primaria) 0%,
+    var(--cor-destaque) 100%
+  );
+  color: white;
+  margin-bottom: 4rem;
+}
+
+.hero-software h1 {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.hero-software h1 i {
+  margin-right: 1rem;
+}
+
+.hero-software p {
+  font-size: 1.2rem;
+  opacity: 0.9;
+}
+
+/* Grade de Softwares */
+.grade-softwares {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 2.5rem;
+  padding: 0 5%;
+  max-width: 1200px;
+  margin: 0 auto 4rem;
+}
+
+/* Cards de Software */
+.card-software {
+  background: white;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  border: 2px solid transparent;
+}
+
+.card-software:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 50px rgba(71, 24, 113, 0.2);
+  border-color: var(--cor-primaria);
+}
+
+/* Header do Card */
+.card-software-header {
+  background: linear-gradient(
+    135deg,
+    var(--cor-primaria) 0%,
+    var(--cor-destaque) 100%
+  );
+  padding: 3rem 2rem;
+  text-align: center;
+  color: white;
+}
+
+.card-software-header i {
+  font-size: 4rem;
+  margin-bottom: 1rem;
+  display: block;
+}
+
+.card-software-header h3 {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+/* Body do Card */
+.card-software-body {
+  padding: 2rem;
+}
+
+.card-software-body p {
+  color: #666;
+  line-height: 1.7;
+  margin-bottom: 1.5rem;
+}
+
+/* Lista de Recursos */
+.recursos-lista {
+  list-style: none;
+  margin-bottom: 1.5rem;
+  padding: 0;
+}
+
+.recursos-lista li {
+  padding: 0.5rem 0;
+  color: #555;
+  display: flex;
+  align-items: center;
+}
+
+.recursos-lista li i {
+  color: var(--cor-primaria);
+  margin-right: 0.5rem;
+  font-size: 1rem;
+}
+
+/* Badges de Status */
+.badge-status {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  margin-top: 1rem;
+}
+
+.badge-em-breve {
+  background-color: #fff3cd;
+  color: #856404;
+}
+
+.badge-disponivel {
+  background-color: #d4edda;
+  color: #155724;
+}
+
+.badge-desenvolvimento {
+  background-color: #d1ecf1;
+  color: #0c5460;
+}
+
+/* Botões de Software */
+.btn-software {
+  width: 100%;
+  padding: 1rem;
+  background-color: var(--cor-primaria);
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 1rem;
+  font-size: 1rem;
+}
+
+.btn-software:hover {
+  background-color: var(--cor-destaque);
+  transform: translateY(-2px);
+}
+
+.btn-software:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.btn-software:disabled:hover {
+  background-color: #ccc;
+}
+
+/* Seção de Contato Softwares */
+.info-contato-software {
+  text-align: center;
+  padding: 3rem 5%;
+  background-color: white;
+  margin: 4rem 0;
+}
+
+.info-contato-software h2 {
+  color: var(--cor-primaria);
+  margin-bottom: 1rem;
+  font-size: 2rem;
+}
+
+.info-contato-software p {
+  color: #666;
+  margin-bottom: 2rem;
+  font-size: 1.1rem;
+}
+
+/* CHAT BOT */
+/* Botão flutuante no canto inferior direito */
+.chat-btn {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: var(--cor-primaria);
+  color: #fff;
+  border: none;
+  padding: 15px 20px;
+  border-radius: 30px;
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  font-size: 16px;
+  z-index: 1000;
+}
+
+/* Container do Chat (inicialmente escondido) */
+.chat-container {
+  display: none; /* Começa escondido */
+  position: fixed;
+  bottom: 80px;
+  right: 20px;
+  width: 300px;
+  height: 400px;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  flex-direction: column;
+  overflow: hidden;
+  z-index: 1000;
+  font-family: Arial, sans-serif;
+}
+
+.chat-header {
+  background-color: var(--cor-primaria);
+  color: white;
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.chat-messages {
+  flex: 1;
+  padding: 10px;
+  overflow-y: auto;
+  background-color: #f1f1f1;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* Estilo das mensagens */
+.message {
+  padding: 8px 12px;
+  border-radius: 15px;
+  max-width: 80%;
+  font-size: 14px;
+}
+
+.bot-message {
+  background-color: #e0e0e0;
+  align-self: flex-start;
+  color: #333;
+}
+
+.user-message {
+  background-color: var(--cor-primaria);
+  color: #fff;
+  align-self: flex-end;
+}
+
+.chat-input-area {
+  padding: 10px;
+  display: flex;
+  border-top: 1px solid #fff;
+}
+
+.chat-input-area input {
+  flex: 1;
+  padding: 8px;
+  border: 1px solid #fff;
+  border-radius: 4px;
+  outline: none;
+}
+
+/* Ajustes para a formatação de texto dentro das mensagens */
+.message p {
+  margin: 0 0 5px 0; /* Remove margens grandes dos parágrafos */
+}
+
+.message p:last-child {
+  margin-bottom: 0; /* Remove margem do último parágrafo */
+}
+
+.message ul,
+.message ol {
+  margin: 5px 0;
+  padding-left: 20px; /* Recuo para as listas */
+}
+
+.message strong {
+  font-weight: bold; /* Garante que o negrito apareça */
+}
+
+.message a {
+  color: inherit;
+  text-decoration: underline;
+}
+
+/* Estilo para os botões de opções */
+.options-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 10px 0;
+}
+
+.option-btn {
+  background-color: #f0f2f5;
+  border: 1px solid var(--cor-primaria);
+  color: var(--cor-primaria);
+  padding: 8px 12px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 13px;
+  transition: all 0.2s;
+}
+
+.option-btn:hover {
+  background-color: var(--cor-primaria);
+  color: white;
+}
+
+.option-btn.whatsapp {
+  background-color: #25d366; /* Cor do WhatsApp */
+  border-color: #25d366;
+  color: white;
+  font-weight: bold;
+}
+
+.option-btn.whatsapp:hover {
+  background-color: #128c7e;
+}
+
+
+/* ==========================================
+   RESPONSIVIDADE - PÁGINA DE SOFTWARES
+   ========================================== */
+
+@media (max-width: 968px) {
+  .hero-software h1 {
+    font-size: 2rem;
+  }
+
+  .hero-software p {
+    font-size: 1rem;
+  }
+
+  .grade-softwares {
+    grid-template-columns: 1fr;
+    padding: 0 2rem;
+  }
+
+  .card-software-header {
+    padding: 2rem 1.5rem;
+  }
+
+  .card-software-header i {
+    font-size: 3rem;
+  }
+
+  .card-software-header h3 {
+    font-size: 1.3rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .hero-software {
+    padding: 3rem 2rem;
+  }
+
+  .hero-software h1 {
+    font-size: 1.8rem;
+  }
+
+  .grade-softwares {
+    gap: 2rem;
+  }
+
+  .card-software-body {
+    padding: 1.5rem;
+  }
+
+  .info-contato-software h2 {
+    font-size: 1.5rem;
+  }
+
+  .info-contato-software p {
+    font-size: 1rem;
+  }
+}

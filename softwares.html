@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Softwares - Proenginn</title>
+
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="software.css" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body>
+    <!-- CABEÇALHO -->
+    <header class="cabecalho">
+      <a href="index.html">
+        <img src="assets/logo.png" alt="Logo Proenginn" class="img-logo" />
+      </a>
+
+      <nav id="menu">
+        <a href="index.html#inicio">Início</a>
+        <a href="index.html#empresa">Empresa</a>
+        <a href="index.html#servicos">Serviços</a>
+        <a href="softwares.html">Softwares</a>
+        <a href="index.html#contato">Contato</a>
+      </nav>
+
+      <i class="fa-solid fa-bars menu-mobile" onclick="toggleMenu()"></i>
+    </header>
+
+    <!-- HERO SECTION -->
+    <div class="hero-software">
+      <h1><i class="fas fa-laptop-code"></i> Nossos Softwares</h1>
+      <p>
+        Soluções tecnológicas desenvolvidas para otimizar sua operação
+        industrial
+      </p>
+    </div>
+
+    <!-- GRADE DE SOFTWARES -->
+    <div class="grade-softwares">
+      <!-- SOFTWARE 1 -->
+      <div class="card-software">
+        <div class="card-software-header">
+          <i class="fas fa-desktop"></i>
+          <h3>Sistema Supervisório Industrial</h3>
+        </div>
+        <div class="card-software-body">
+          <p>
+            Software para monitoramento em tempo real de processos industriais
+            com interface intuitiva e dashboards customizáveis.
+          </p>
+
+          <ul class="recursos-lista">
+            <li>
+              <i class="fas fa-check-circle"></i> Monitoramento em tempo real
+            </li>
+            <li>
+              <i class="fas fa-check-circle"></i> Dashboards personalizáveis
+            </li>
+            <li><i class="fas fa-check-circle"></i> Alertas e notificações</li>
+            <li><i class="fas fa-check-circle"></i> Relatórios automáticos</li>
+          </ul>
+
+          <span class="badge-status badge-desenvolvimento"
+            >Em Desenvolvimento</span
+          >
+          <button class="btn-software" disabled>Em breve</button>
+        </div>
+      </div>
+
+      <!-- SOFTWARE 2 -->
+      <div class="card-software">
+        <div class="card-software-header">
+          <i class="fas fa-chart-line"></i>
+          <h3>Gestão de Manutenção</h3>
+        </div>
+        <div class="card-software-body">
+          <p>
+            Plataforma completa para gerenciamento de manutenções preventivas e
+            corretivas, otimizando o tempo de parada dos equipamentos.
+          </p>
+
+          <ul class="recursos-lista">
+            <li><i class="fas fa-check-circle"></i> Agenda de manutenções</li>
+            <li>
+              <i class="fas fa-check-circle"></i> Controle de estoque de peças
+            </li>
+            <li>
+              <i class="fas fa-check-circle"></i> Histórico de equipamentos
+            </li>
+            <li>
+              <i class="fas fa-check-circle"></i> Indicadores de performance
+            </li>
+          </ul>
+
+          <span class="badge-status badge-em-breve">Em Breve</span>
+          <button class="btn-software" disabled>Aguarde o lançamento</button>
+        </div>
+      </div>
+
+      <!-- SOFTWARE 3 -->
+      <div class="card-software">
+        <div class="card-software-header">
+          <i class="fas fa-database"></i>
+          <h3>Análise de Dados Industriais</h3>
+        </div>
+        <div class="card-software-body">
+          <p>
+            Sistema avançado de análise de dados para identificar padrões,
+            otimizar processos e aumentar a eficiência produtiva.
+          </p>
+
+          <ul class="recursos-lista">
+            <li><i class="fas fa-check-circle"></i> Big Data Analytics</li>
+            <li><i class="fas fa-check-circle"></i> Machine Learning</li>
+            <li><i class="fas fa-check-circle"></i> Predição de falhas</li>
+            <li><i class="fas fa-check-circle"></i> Otimização de processos</li>
+          </ul>
+
+          <span class="badge-status badge-em-breve">Planejamento</span>
+          <button class="btn-software" disabled>Em planejamento</button>
+        </div>
+      </div>
+
+      <!-- SOFTWARE 4 - PLACEHOLDER -->
+      <div class="card-software">
+        <div class="card-software-header">
+          <i class="fas fa-cube"></i>
+          <h3>Novo Software</h3>
+        </div>
+        <div class="card-software-body">
+          <p>
+            Espaço reservado para o próximo software desenvolvido pela
+            Proenginn. Estamos sempre inovando para trazer as melhores soluções.
+          </p>
+
+          <ul class="recursos-lista">
+            <li><i class="fas fa-check-circle"></i> Recurso 1</li>
+            <li><i class="fas fa-check-circle"></i> Recurso 2</li>
+            <li><i class="fas fa-check-circle"></i> Recurso 3</li>
+            <li><i class="fas fa-check-circle"></i> Recurso 4</li>
+          </ul>
+
+          <span class="badge-status badge-em-breve">Em Breve</span>
+          <button class="btn-software" disabled>Em breve</button>
+        </div>
+      </div>
+
+      <!-- SOFTWARE 5 - PLACEHOLDER -->
+      <div class="card-software">
+        <div class="card-software-header">
+          <i class="fas fa-code"></i>
+          <h3>Novo Software</h3>
+        </div>
+        <div class="card-software-body">
+          <p>
+            Espaço reservado para o próximo software desenvolvido pela
+            Proenginn. Estamos sempre inovando para trazer as melhores soluções.
+          </p>
+
+          <ul class="recursos-lista">
+            <li><i class="fas fa-check-circle"></i> Recurso 1</li>
+            <li><i class="fas fa-check-circle"></i> Recurso 2</li>
+            <li><i class="fas fa-check-circle"></i> Recurso 3</li>
+            <li><i class="fas fa-check-circle"></i> Recurso 4</li>
+          </ul>
+
+          <span class="badge-status badge-em-breve">Em Breve</span>
+          <button class="btn-software" disabled>Em breve</button>
+        </div>
+      </div>
+
+      <!-- SOFTWARE 6 - PLACEHOLDER -->
+      <div class="card-software">
+        <div class="card-software-header">
+          <i class="fas fa-microchip"></i>
+          <h3>Novo Software</h3>
+        </div>
+        <div class="card-software-body">
+          <p>
+            Espaço reservado para o próximo software desenvolvido pela
+            Proenginn. Estamos sempre inovando para trazer as melhores soluções.
+          </p>
+
+          <ul class="recursos-lista">
+            <li><i class="fas fa-check-circle"></i> Recurso 1</li>
+            <li><i class="fas fa-check-circle"></i> Recurso 2</li>
+            <li><i class="fas fa-check-circle"></i> Recurso 3</li>
+            <li><i class="fas fa-check-circle"></i> Recurso 4</li>
+          </ul>
+
+          <span class="badge-status badge-em-breve">Em Breve</span>
+          <button class="btn-software" disabled>Em breve</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- SEÇÃO DE CONTATO -->
+    <div class="info-contato-software">
+      <h2>Interessado em nossos softwares?</h2>
+      <p>
+        Entre em contato para saber mais sobre nossas soluções ou solicitar uma
+        demonstração personalizada.
+      </p>
+      <a href="https://wa.me/5542991530163" class="btn" target="_blank">
+        <i class="fab fa-whatsapp"></i> Fale Conosco
+      </a>
+    </div>
+
+    <!-- FOOTER -->
+    <footer>
+      <div class="footer-content">
+        <div class="footer-section">
+          <h3>Proenginn</h3>
+          <p>Progresso | Engenharia | Inovação</p>
+          <p>Soluções em automação industrial com excelência e compromisso.</p>
+        </div>
+
+        <div class="footer-section">
+          <h3>Contato</h3>
+          <p><i class="fas fa-envelope"></i> proenginn@proenginn.com.br</p>
+          <p><i class="fas fa-phone"></i> (42) 99153-0163</p>
+          <p><i class="fas fa-globe"></i> www.proenginn.com.br</p>
+        </div>
+
+        <div class="footer-section">
+          <h3>Siga-nos</h3>
+          <div class="social-links">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+            <a href="https://wa.me/5542991530163" target="_blank"
+              ><i class="fab fa-whatsapp"></i
+            ></a>
+          </div>
+        </div>
+      </div>
+
+      <div class="copyright">
+        <p>&copy; 2025 PROENGINN. Todos os direitos reservados.</p>
+      </div>
+    </footer>
+
+    <!-- CHAT BOT -->
+    <button class="chat-btn" onclick="toggleChat()">💬 Ajuda</button>
+
+    <div class="chat-container" id="chatContainer">
+      <div class="chat-header">
+        <span>Suporte Virtual</span>
+        <button onclick="toggleChat()">X</button>
+      </div>
+
+      <div class="chat-messages" id="chatMessages">
+        <div class="message bot-message">Olá! Como posso ajudar?</div>
+      </div>
+
+      <div class="chat-input-area">
+        <input
+          type="text"
+          id="userInput"
+          placeholder="Escreva aqui..."
+          onkeypress="handleEnter(event)"
+        />
+        <button onclick="sendMessage()">Enviar</button>
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script src="software.js"></script>
+    <script src="script.js"></script>
+    <script
+      src="https://kit.fontawesome.com/e70766d8e5.js"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
