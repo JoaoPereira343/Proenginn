@@ -51,7 +51,7 @@ document
 // CHAT BOT
 // A TUA CHAVE DO GEMINI (Cola aqui a chave que começa por AIza...)
 // CUIDADO: Não partilhes este código publicamente com a chave
-const API_KEY = "AIzaSyAkNIfmhMXF9HCDhm0dL0Fl0FQ7ju3jegE";
+const API_KEY = "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";
 const WHATSAPP_NUMBER = "5542991530163"; // Coloca o teu número aqui (com código do país e DDD)
 
 // Lista de Serviços
