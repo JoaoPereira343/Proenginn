@@ -159,7 +159,7 @@ Regras de comportamento:
     ];
 
     const requestBody = {
-      model: "gpt-3.5-turbo", // Modelo mais compatível e estável
+      model: "gpt-4.5", // Modelo mais compatível e estável
       messages: messages,
       temperature: 0.7,
       max_tokens: 300
