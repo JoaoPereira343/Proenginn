@@ -48,10 +48,12 @@ document
     observer.observe(el);
   });
 
-// CHAT BOT COM OPENAI
-// Coloca aqui a tua chave da OpenAI (começa por sk-...)
-// CUIDADO: Não partilhes este código publicamente com a chave
-const API_KEY = "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";
+// =======================
+// CHAT BOT (OpenAI)
+// =======================
+// ⚠️ RECOMENDADO: NÃO colocar API key no front-end (browser).
+// Para rodar agora do jeito que você pediu, deixei aqui só como placeholder.
+const API_KEY = "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";
 const WHATSAPP_NUMBER = "5542991530163"; // Coloca o teu número aqui (com código do país e DDD)
 
 // Lista de Serviços
@@ -68,7 +70,6 @@ const servicos = [
 ];
 
 let optionsShown = false; // Para não repetir os botões toda vez que abre
-let conversationHistory = []; // Histórico da conversa para contexto
 
 function toggleChat() {
   const chat = document.getElementById("chatContainer");
@@ -98,12 +99,14 @@ function showOptions() {
     const btn = document.createElement("button");
     btn.className = "option-btn";
     btn.textContent = servico;
+
     // Quando clica, envia a mensagem como se o utilizador tivesse escrito
     btn.onclick = () => {
       const input = document.getElementById("userInput");
       input.value = `Gostaria de saber mais sobre ${servico}`;
       sendMessage();
     };
+
     optionsDiv.appendChild(btn);
   });
 
@@ -121,6 +124,21 @@ function showOptions() {
   chatMessages.scrollTop = chatMessages.scrollHeight;
 }
 
+// Extrai texto do Responses API (robusto)
+function extractOpenAIText(data) {
+  // Formato típico: data.output = [{type:"message", role:"assistant", content:[{type:"output_text", text:"..."}]}]
+  if (!data || !Array.isArray(data.output)) return null;
+
+  const msg = data.output.find((o) => o && o.type === "message" && o.role === "assistant");
+  if (!msg || !Array.isArray(msg.content)) return null;
+
+  const textPart = msg.content.find((c) => c && (c.type === "output_text" || c.type === "text"));
+  if (!textPart) return null;
+
+  // Algumas variantes podem usar "text" diretamente
+  return textPart.text || null;
+}
+
 async function sendMessage() {
   const inputField = document.getElementById("userInput");
   const messageText = inputField.value.trim();
@@ -130,46 +148,39 @@ async function sendMessage() {
   addMessage(messageText, "user-message");
   inputField.value = "";
 
-  // Adiciona a mensagem do usuário ao histórico
-  conversationHistory.push({
-    role: "user",
-    content: messageText
-  });
-
   const loadingId = addMessage("A pensar...", "bot-message");
 
   try {
-    const url = "https://api.openai.com/v1/chat/completions";
-
-    // Instruções do sistema para o assistente
-    const systemPrompt = `Tu és um assistente técnico especializado em automação industrial da WRA Planejamento e Montagens Industrial.
+    // Prompt do sistema com a lista de serviços
+    const systemPrompt = `
+Tu és um assistente técnico especializado em automação industrial.
 Os teus serviços são: ${servicos.join(", ")}.
+Se o cliente perguntar sobre um destes serviços, explica brevemente o que é e convida a fazer um orçamento.
+Se perguntarem contato, indica o botão do WhatsApp.
+Responde de forma curta e profissional.
+`.trim();
 
-Regras de comportamento:
-- Se o cliente perguntar sobre um destes serviços, explica brevemente o que é (máximo 3-4 linhas) e convida a fazer um orçamento.
-- Se perguntarem sobre contato, indica o botão do WhatsApp ou o número ${WHATSAPP_NUMBER}.
-- Responde de forma curta, profissional e amigável em português do Brasil.
-- Se perguntarem sobre preços, explica que cada projeto é personalizado e convida a entrar em contato para orçamento.
-- Mantém as respostas objetivas e técnicas, mas acessíveis.`;
+    // Endpoint OpenAI Responses API
+    const url = "https://api.openai.com/v1/responses";
 
-    // Monta o histórico completo da conversa
-    const messages = [
+    // Contexto estilo chat (system + user)
+    const context = [
       { role: "system", content: systemPrompt },
-      ...conversationHistory
+      { role: "user", content: messageText },
     ];
 
     const requestBody = {
-      model: "gpt-4o-mini", // Modelo mais econômico e eficiente
-      messages: messages,
-      temperature: 0.7,
-      max_tokens: 300 // Limita o tamanho da resposta
+      model: "gpt-4.1-mini",
+      input: context,
+      max_output_tokens: 220,
+      temperature: 0.4,
     };
 
     const response = await fetch(url, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        "Authorization": `Bearer ${API_KEY}`
+        Authorization: `Bearer ${API_KEY}`,
       },
       body: JSON.stringify(requestBody),
     });
@@ -177,50 +188,33 @@ Regras de comportamento:
     const data = await response.json();
     removeMessage(loadingId);
 
-    if (data.error) {
-      console.error(data.error);
-      if (data.error.code === "insufficient_quota") {
-        addMessage(
-          "⚠️ O sistema está temporariamente indisponível. Por favor, usa o botão do WhatsApp para falar connosco.",
-          "bot-message"
-        );
-      } else if (data.error.code === "invalid_api_key") {
-        addMessage(
-          "⚠️ Erro de configuração. Por favor, contacta-nos pelo WhatsApp.",
-          "bot-message"
-        );
-      } else {
-        addMessage(
-          "Desculpe, ocorreu um erro. Tenta novamente ou usa o WhatsApp.",
-          "bot-message"
-        );
-      }
+    if (!response.ok || data.error) {
+      console.error("OpenAI error:", data.error || data);
+
+      const msg =
+        (data && data.error && data.error.message) ||
+        "Desculpe, ocorreu um erro ao contactar o assistente.";
+
+      // Mensagem mais “comercial” caso falhe
+      addMessage(
+        `⚠️ Não consegui responder agora. Se preferir, use o botão do WhatsApp para falar connosco.\n\nDetalhe: ${msg}`,
+        "bot-message"
+      );
       return;
     }
 
-    if (data.choices && data.choices.length > 0) {
-      const botReply = data.choices[0].message.content;
-      
-      // Adiciona a resposta do assistente ao histórico
-      conversationHistory.push({
-        role: "assistant",
-        content: botReply
-      });
-      
+    const botReply = extractOpenAIText(data);
+    if (botReply) {
       addMessage(botReply, "bot-message");
-      
-      // Limita o histórico a 10 mensagens (5 trocas) para não exceder tokens
-      if (conversationHistory.length > 10) {
-        conversationHistory = conversationHistory.slice(-10);
-      }
+    } else {
+      // Fallback: se o formato vier diferente
+      addMessage("Recebi a resposta, mas não consegui ler o texto retornado.", "bot-message");
+      console.warn("Formato inesperado do Responses API:", data);
     }
   } catch (error) {
-    console.error("Erro:", error);
     removeMessage(loadingId);
-    addMessage(
-      "Erro de conexão. Verifica a tua internet ou usa o WhatsApp.",
-      "bot-message"
-    );
+    console.error(error);
+    addMessage("Erro de conexão.", "bot-message");
   }
 }
 
